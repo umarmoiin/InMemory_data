@@ -1,0 +1,28 @@
+<form method="POST" action="{% url 'upload' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    Title:  {{ form1.title }}
+    <p><input type="file" name="file" multiple></p>
+    <button type="submit">Upload</button>
+    
+</form>
+
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% comment %} uploaded file {% endcomment %}
+    {% if file_paths %}
+    <h3>Uploaded File </h3>
+    <ul>
+      {% for file_path in file_paths %}
+        <li>
+          <p>{{ file_path }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}

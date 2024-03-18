@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temporary Data Example</title>
+</head>
+<body>
+    <h1>Temporary Data Example</h1>
+
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    
+    {% if temporary_data %}
+        <h2>Temporary Data from settings:</h2>
+        <ul>
+            {% for key, value in temporary_data.items %}
+                <li>{{ key }}:{{ value }}<br></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+    <h2><a href ="fileupload" >Upload a file</a><br/></h2>
+
+</body>
+</html>
+            
